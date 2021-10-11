@@ -15,3 +15,21 @@ Values
 ,(SEQ_AUTHOR_UID.nextval, 'Jan', '','Grover')
 ,(SEQ_AUTHOR_UID.nextval, 'Jennifer', '','Clapp')
 ,(SEQ_AUTHOR_UID.nextval, 'Kathleen', '','Petelinsek');
+
+CREATE OR REPLACE TABLE BOOK
+( BOOK_UID NUMBER DEFAULT SEQ_BOOK_UID.nextval
+ ,TITLE VARCHAR(50)
+ ,YEAR_PUBLISHED NUMBER(4,0)
+);
+
+// Insert records into the book table
+// You don't have to list anything for the
+// BOOK_UID field because the default setting
+// will take care of it for you
+INSERT INTO BOOK(TITLE,YEAR_PUBLISHED)
+VALUES
+ ('Food',2001)
+,('Food',2006)
+,('Food',2008)
+,('Food',2016)
+,('Food',2015);
