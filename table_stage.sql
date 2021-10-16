@@ -57,3 +57,19 @@ DESC STAGE MANAGE_DB.external_stages.aws_stage;
 ALTER STAGE aws_stage
     SET credentials=(aws_key_id='XYZ_DUMMY_ID' aws_secret_key='987xyz');
     
+// Publicly accessible staging area    
+
+CREATE OR REPLACE STAGE MANAGE_DB.external_stages.aws_stage
+    url='s3://bucketsnowflakes3';
+
+// List files in stage
+
+LIST @aws_stage;
+
+//Copy command with pattern for file name
+
+COPY INTO OUR_FIRST_DB.PUBLIC.ORDERS
+    FROM @MANAGE_DB.external_stages.aws_stage
+    file_format= (type = csv field_delimiter=',' skip_header=1)
+    pattern='.*Order.*';
+	
