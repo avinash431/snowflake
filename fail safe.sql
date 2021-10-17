@@ -1,3 +1,5 @@
+use role accountadmin;
+
 // Storage usage on account level
 
 SELECT * FROM SNOWFLAKE.ACCOUNT_USAGE.STORAGE_USAGE ORDER BY USAGE_DATE DESC;
